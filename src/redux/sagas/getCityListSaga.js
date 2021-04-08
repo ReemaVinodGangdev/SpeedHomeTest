@@ -21,16 +21,16 @@ async function getCityList(radius,lat,lon,cnt) {
   });
 }
 
-// Our worker Saga that getContacts
+// Our worker Saga that getCityList
 function* getCityListAsync(action) {
   try {
     yield put(getCityListActions.enableLoader());
 
-    const response = yield call(getCityList(action.radius,action.lat,action.lon,action.cnt));
-    console.log(response)  
+    const response = yield call(getCityList,action.radius,action.lat,action.lon,action.cnt);
+console.log(response)
     if (response.status == 200) {
 
-      yield put(getCityListActions.onGetCityListResponse(response.data));
+      yield put(getCityListActions.onGetCityListResponse(response.data.list));
       yield put(getCityListActions.disableLoader());
       return;
     } else if (response.status == 404) {

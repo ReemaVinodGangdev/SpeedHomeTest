@@ -14,6 +14,7 @@ export function requestGetCityList(radius,lat,lon,cnt) {
 }
 
 export function onGetCityListResponse(response) {
+  console.log("response"+response)
   return {
     type: types.GET_CITY_RESPONSE,
     response,

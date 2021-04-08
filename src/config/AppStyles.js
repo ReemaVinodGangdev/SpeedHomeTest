@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 /*
  * Provides universal color configs used in the app.
  * Provides universal fonts used in the app.
@@ -19,22 +21,9 @@ const AppStyles = {
       COLOR_f02626: '#f02626'
     },
     fonts: {
-      FONT_BLACK: 'GothamBlack',
-      FONT_BLACK_ITALIC: 'GothamBlackItalic',
-      FONT_BOLD: 'GothamBold',
-      FONT_BOLD_ITALIC: 'GothamBoldItalic',
-      FONT_BOOK: 'GothamBook',
-      FONT_BOOK_ITALIC: 'GothamBookItalic',
-      FONT_LIGHT: 'GothamLight',
-      FONT_LIGHT_ITALIC: 'GothamLightItalic',
-      FONT_MEDIUM: 'GothamMedium',
-      FONT_MEDIUM_ITALIC: 'GothamMediumItalic',
-      FONT_THIN: 'GothamThin',
-      FONT_THIN_ITALIC: 'GothamThinItalic',
-      FONT_ULTRA: 'GothamUltra',
-      FONT_ULTRA_ITALIC: 'GothamUltraItalic',
-      FONT_XLIGHT: 'GothamXLight',
-      FONT_XLIGHT_ITALIC: 'GothamXLightItalic',
+     
+      FONT_BOOK: Platform.OS=="ios"?'Times New Roman':'Roboto',
+    
     },
     texts: {
       LOADING: 'Loading...'

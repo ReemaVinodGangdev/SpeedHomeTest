@@ -24,6 +24,7 @@
      };
    },
    [types.GET_CITY_RESPONSE](state, action) {
+     console.log("action"+action.response)
      return {
        ...state,
        cityList: action.response
