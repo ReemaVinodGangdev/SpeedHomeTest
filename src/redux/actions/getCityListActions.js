@@ -3,9 +3,13 @@
  */
 import * as types from '../types';
 
-export function requestGetCityList() {
+export function requestGetCityList(radius,lat,lon,cnt) {
   return {
-    type: types.GET_CITY_REQUEST
+    type: types.GET_CITY_REQUEST,
+    radius,
+    lat,
+    lon,
+    cnt
   };
 }
 

@@ -6,13 +6,21 @@
  
  const initialState = {
    cityList: [],
-   isCityListLoading:false
+   isCityListLoading:false,
+   radius:'',
+   lat:"",
+   lon:'',
+   cnt:''
  };
  
- export const getCityList = createReducer(initialState, {
+ export const getCityListReducer = createReducer(initialState, {
    [types.GET_CITY_REQUEST](state, action) {
      return {
-       ...state
+       ...state,
+       radius:action.radius,
+       lon:action.lon,
+       lat:action.lat,
+       cnt:action.cnt
      };
    },
    [types.GET_CITY_RESPONSE](state, action) {
