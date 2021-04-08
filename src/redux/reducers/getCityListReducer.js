@@ -5,7 +5,8 @@
  import * as types from '../types';
  
  const initialState = {
-   cityList: []
+   cityList: [],
+   isCityListLoading:false
  };
  
  export const getCityList = createReducer(initialState, {
@@ -24,6 +25,18 @@
      return {
        ...state
      };
-   }
+   },
+   [types.GET_CITY_ENABLE_LOADER](state, action) {
+    return {
+      ...state,
+      isCityListLoading:true
+    };
+  },
+  [types.GET_CITY_DISABLE_LOADER](state, action) {
+    return {
+      ...state,
+      isCityListLoading:false
+    };
+  }
  });
  
