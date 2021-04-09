@@ -96,6 +96,14 @@
 			name = SpeedHomeTest;
 			sourceTree = "<group>";
 		};
+		1E1AA4B735884C6288E84023 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +122,6 @@
 				5A4938985F24D0B82011A265 /* Pods-SpeedHomeTest-SpeedHomeTestTests.debug.xcconfig */,
 				6C7BA09B8F83D797761E2022 /* Pods-SpeedHomeTest-SpeedHomeTestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -134,6 +141,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				42576B51F51C66FDBF2B9089 /* Pods */,
+				1E1AA4B735884C6288E84023 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -496,7 +504,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.WeatherApp;
 				PRODUCT_NAME = SpeedHomeTest;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -521,7 +529,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.WeatherApp;
 				PRODUCT_NAME = SpeedHomeTest;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

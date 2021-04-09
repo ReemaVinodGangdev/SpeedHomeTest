@@ -18,7 +18,8 @@ const AppStyles = {
       COLOR_00c6cc: '#00c6cc',
       COLOR_LIGHTGRAY: 'lightgray',
       COLOR_GRAY: 'gray',
-      COLOR_f02626: '#f02626'
+      COLOR_f02626: '#f02626',
+      COLOR_APP_COLOR:'#00804A'
     },
     fonts: {
      

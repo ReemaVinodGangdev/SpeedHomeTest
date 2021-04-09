@@ -2,11 +2,16 @@ import React, { useEffect } from 'react'
 import { View, Text, ActivityIndicator, SafeAreaView, TouchableWithoutFeedback,ScrollView,StyleSheet,FlatList, Platform, TouchableHighlight } from 'react-native'
 import * as getCityListActions from '../redux/actions/getCityListActions'
 import Spinner from '../components/Spinner'
+import Screen from '../components/Screen'
+import Header from '../components/Header'
 import { useDispatch, useSelector } from 'react-redux';
 import config from '../config/AppStyles'
+import Helpers from '../config/Helpers'
+import commonStyles from '../config/commonStyles'
+
 
 export default function CityListScreen({navigation}) {
-     const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const {
         getCityListReducer: { isCityListLoading, cityList },
     } = useSelector(state => state);
@@ -16,8 +21,10 @@ export default function CityListScreen({navigation}) {
       useEffect(()=>{
         console.log(cityList)
       },[cityList])
+      
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: config.color.COLOR_WHITE }}>
+        <Screen >
+        <Header title = "WeatherApp" ShowBackIcon={false}/>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
 
             <View style={styles.container}>
@@ -27,40 +34,45 @@ export default function CityListScreen({navigation}) {
                 cityList && cityList.length>0 &&
             
             <FlatList
-  ItemSeparatorComponent={
-    Platform.OS !== 'android' &&
-    (({ highlighted }) => (
-      <View
-        style={[
-          {borderBottomColor:'black',borderWidth:0.4},
-          highlighted && { marginLeft: 0 }
-        ]}
-      />
-    ))
-  }
-  data={cityList}
-  renderItem={({ item, index, separators }) => (
-    <TouchableHighlight
-      key={item.key}
-      onPress={() => this._onPress(item)}
-      onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight}>
-      <View style={{ backgroundColor: 'white' }}>
-        <Text>{item.name}</Text>
-      </View>
-    </TouchableHighlight>
-  )}
-  style={{flex:1}}
-/>
+                  
+                    data={cityList}
+                    renderItem={({ item, index, separators }) => (
+                      <TouchableHighlight
+                        key={item.key}
+                        onPress={() =>navigation.navigate('MapScreen',{data:item})}
+                        onShowUnderlay={separators.highlight}
+                        onHideUnderlay={separators.unhighlight}>
+                        <View style={styles.divRow}>
+                        <View>
+                          <Text style={[commonStyles.mediumText,styles.name]}>{item.name}</Text>
+                          <Text style={[commonStyles.normalText,styles.status]}>{item.clouds.all>50?"Cloudy":"Clear Sky"}</Text>
+                        </View>
+                        <Text style={[commonStyles.normalText,styles.temp]}>{item.main.temp+" °C" }</Text>
+                        </View>
+                      </TouchableHighlight>
+                    )}
+                    style={{flex:1}}
+                  />
             }
         </View>
  
         </TouchableWithoutFeedback>
-        </SafeAreaView>
+        </Screen>
     )
 }
 const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
+        backgroundColor:'white'
+    },
+    divRow:{paddingVertical:Helpers.getDynamicSize(10),flex:1, backgroundColor: 'white',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:Helpers.getDynamicSize(10) },
+    name:{
+      fontSize:14
+    },
+    status:{
+      fontSize:12
+    },
+    temp:{
+      fontSize:20
     }
 })
