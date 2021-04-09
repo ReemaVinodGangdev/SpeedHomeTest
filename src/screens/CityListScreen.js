@@ -45,7 +45,7 @@ export default function CityListScreen({navigation}) {
                         <View style={styles.divRow}>
                         <View>
                           <Text style={[commonStyles.mediumText,styles.name]}>{item.name}</Text>
-                          <Text style={[commonStyles.normalText,styles.status]}>{item.clouds.all>50?"Cloudy":"Clear Sky"}</Text>
+                          <Text style={[commonStyles.normalText,styles.status]}>{item.weather[0].description}</Text>
                         </View>
                         <Text style={[commonStyles.normalText,styles.temp]}>{item.main.temp+" °C" }</Text>
                         </View>
