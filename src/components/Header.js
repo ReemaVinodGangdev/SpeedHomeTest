@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text, Dimensions,Image } from "react-native";
 import AppStyles from "../config/AppStyles";
-import  MaterialCommunityIcons  from "react-native-vector-icons/MaterialCommunityIcons";
+
 import Helpers from "../config/Helpers";
 import commonStyles from "../config/commonStyles";
 

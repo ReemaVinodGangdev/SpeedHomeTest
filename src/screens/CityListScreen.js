@@ -38,6 +38,18 @@ PushNotification.configure({
       */
     requestPermissions: true,
 });
+PushNotification.createChannel(
+  {
+    channelId: "channel-id", // (required)
+    channelName: "My channel", // (required)
+    channelDescription: "A channel to categorise your notifications", // (optional) default: undefined.
+    playSound: false, // (optional) default: true
+    soundName: "default", // (optional) See `soundName` parameter of `localNotification` function
+    importance: 4, // (optional) default: 4. Int value of the Android notification importance
+    vibrate: true, // (optional) default: true. Creates the default vibration patten if true.
+  },
+  (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
+);
 
 
 export default function CityListScreen({navigation}) {
@@ -55,33 +67,40 @@ export default function CityListScreen({navigation}) {
     
       useEffect(()=>{
         console.log(weatherData)
-        PushNotification.localNotificationSchedule({
-          //... You can use all the options from localNotifications
-          message: "Current Temperature: "+weatherData.main.temp+" °c", // (required)
-          title:"WeatherApp",
-          date: new Date(Date.now() + 10 * 1000), // in 60 secs
-          allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
-        });
+       
+          PushNotification.localNotificationSchedule({
+            //... You can use all the options from localNotifications
+            message: "Current Temperature: "+weatherData.main.temp+" °c", // (required)
+            title:"WeatherApp",
+            date: new Date(Date.now() + 10 * 1000), // in 10 secs
+            allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
+            channelId: "channel-id"
+          });
+        
+       
       },[weatherData])
 
       const getCurrentLangLng = () => {
         if (Platform.OS == "ios") {
           Geolocation.getCurrentPosition(
             (location) => {
-              alert(location.coords.latitude)
+       
               setLatitude(location.coords.latitude);
               setLongitude(location.coords.longitude);
-              dispatch(getCityListActions.requestGetCityList(2.5,location.coords.longitude,location.coords.longitude,50));
-              dispatch(getCurrentTempAction.requestGetCurrentTemperature(2.5,location.coords.longitude,location.coords.longitude));
+              dispatch(getCityListActions.requestGetCityList(2.5,location.coords.latitude,location.coords.longitude,50));
+              dispatch(getCurrentTempAction.requestGetCurrentTemperature(2.5,location.coords.latitude,location.coords.longitude));
             },
             (error) => Alert.alert("Error", JSON.stringify(error)),
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
           );
         } else {
           Geolocation.getCurrentPosition(
-            (position) => {
+            (location) => {
+              console.log("location"+JSON.stringify(location))
               setLatitude(location.coords.latitude);
               setLongitude(location.coords.longitude);
+              dispatch(getCityListActions.requestGetCityList(2.5,location.coords.latitude,location.coords.longitude,50));
+              dispatch(getCurrentTempAction.requestGetCurrentTemperature(2.5,location.coords.latitude,location.coords.longitude));
             },
             (error) => Alert.alert("Error", JSON.stringify(error)),
             { enableHighAccuracy: true, timeout: 20000 }

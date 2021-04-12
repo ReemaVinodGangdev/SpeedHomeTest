@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, View } from "react-native";
+import { StyleSheet, SafeAreaView, View,StatusBar } from "react-native";
 import AppStyles from "../config/AppStyles";
 
 function Screen({ children, style }) {
   return (
     <SafeAreaView style={[styles.container, style]}>
+      <StatusBar color={AppStyles.color.COLOR_APP_COLOR}/>
       <View style={[styles.view, style]}>{children}</View>
     </SafeAreaView>
   );

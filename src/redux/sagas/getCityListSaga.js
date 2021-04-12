@@ -6,7 +6,7 @@ import * as types from '../types';
 import apiconstants from '../../config/ApiConstants';
 
 async function getCityList(radius,lat,lon,cnt) {
-  
+  console.log(lat+lon)
 
   return axios.get(apiconstants.BASE_URL + 'data/'+radius+'/find?lat='+lat+'&lon='+lon+'&cnt='+cnt+'&appid='+apiconstants.API_KEY,{ validateStatus: false })
   .then((response) => response)

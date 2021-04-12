@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "503052094208",
+    "project_id": "weatherapp-310214",
+    "storage_bucket": "weatherapp-310214.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503052094208:android:897f85da34172ab894c1e5",
+        "android_client_info": {
+          "package_name": "com.speedhometest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503052094208-o9ufhggsk7gvgmi5bnh0bodnnp0sme2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm4cF1zlL13fy9hXy8oaWpZWUZbNMJWZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503052094208-o9ufhggsk7gvgmi5bnh0bodnnp0sme2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
