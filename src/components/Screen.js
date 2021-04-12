@@ -5,7 +5,7 @@ import AppStyles from "../config/AppStyles";
 function Screen({ children, style }) {
   return (
     <SafeAreaView style={[styles.container, style]}>
-      <StatusBar color={AppStyles.color.COLOR_APP_COLOR}/>
+      <StatusBar backgroundColor={AppStyles.color.COLOR_APP_COLOR}/>
       <View style={[styles.view, style]}>{children}</View>
     </SafeAreaView>
   );

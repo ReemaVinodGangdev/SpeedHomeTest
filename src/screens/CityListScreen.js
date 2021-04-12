@@ -67,16 +67,16 @@ export default function CityListScreen({navigation}) {
     
       useEffect(()=>{
         console.log(weatherData)
-       
-          PushNotification.localNotificationSchedule({
-            //... You can use all the options from localNotifications
-            message: "Current Temperature: "+weatherData.main.temp+" °c", // (required)
-            title:"WeatherApp",
-            date: new Date(Date.now() + 10 * 1000), // in 10 secs
-            allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
-            channelId: "channel-id"
-          });
-        
+       if(weatherData && weatherData.main && weatherData.main.temp){
+        PushNotification.localNotificationSchedule({
+          //... You can use all the options from localNotifications
+          message: "Current Temperature: "+weatherData.main.temp+" °c", // (required)
+          title:"WeatherApp",
+          date: new Date(Date.now() + 20 * 1000), // in 20 secs
+          allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
+          channelId: "channel-id"
+        });
+       }
        
       },[weatherData])
 
